@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const { MongoClient, ServerApiVersion } = require('mongodb');
-require('dotenv').config()
+require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -48,6 +48,14 @@ async function run() {
 
 
 
+
+
+
+
+
+
+
+
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
@@ -80,9 +88,9 @@ run().catch(console.dir);
 
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+  res.send('eTuitionBd Server is Running Successfully');
+});
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+  console.log(`eTuitionBd server is running on port ${port}`);
+});
