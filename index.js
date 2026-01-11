@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 5000;
@@ -34,13 +34,81 @@ async function run() {
 
 
     // all collaction
+    const eTutionCollaction = client.db("etutionDB").collection("tutions")
 
 
 
 
 
 
+app.post("/tutions", async( req, res) => {
+  const newTutions = req.body
+  const result  = await eTutionCollaction.insertOne(newTutions)
+  res.send(result)
+})
 
+
+app.get("/tutions", async( req, res) => {
+  
+  const result  = await eTutionCollaction.find().toArray()
+  res.send(result)
+})
+
+app.get("/tutions-latest", async (req, res) => {
+  try {
+    // .sort({ _id: -1 }) দিয়ে লেটেস্ট ডাটা এবং .limit(3) দিয়ে প্রথম ৩টি ডাটা নেওয়া হয়েছে
+    const result = await eTutionCollaction
+      .find()
+      .sort({ _id: -1 })
+      .limit(4)
+      .toArray();
+    
+    res.send(result);
+  } catch (error) {
+    res.status(500).send({ message: "Error fetching data", error });
+  }
+});
+
+
+app.get("/tutions-details/:id", async( req, res) => {
+  const email = req.params.id
+  const queary = {_id: new ObjectId(email)}
+  const result  = await eTutionCollaction.findOne(queary)
+  res.send(result)
+})
+
+
+app.get("/my-tutions/:email", async( req, res) => {
+  const email = req.params.email
+  const queary = {email}
+  const result  = await eTutionCollaction.find().toArray(queary)
+  res.send(result)
+})
+app.delete("/tutionsDelete/:id", async( req, res) => {
+  const id = req.params.id
+  const queary = {_id: new ObjectId(id)}
+  const result  = await eTutionCollaction.deleteOne(queary)
+  res.send(result)
+})
+
+// Update Tuition API
+app.put("/tutionsUpdate/:id", async (req, res) => {
+  const id = req.params.id;
+  const filter = { _id: new ObjectId(id) };
+  const updatedDoc = {
+    $set: {
+      subject: req.body.subject,
+      class: req.body.class,
+      tuitionType: req.body.tuitionType,
+      salary: req.body.salary,
+      daysPerWeek: req.body.daysPerWeek,
+      location: req.body.location,
+      description: req.body.description,
+    },
+  };
+  const result = await eTutionCollaction.updateOne(filter, updatedDoc);
+  res.send(result);
+});
 
 
 
@@ -94,4 +162,3 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log(`eTuitionBd server is running on port ${port}`);
 });
-,
