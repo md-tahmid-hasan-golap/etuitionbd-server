@@ -21,11 +21,10 @@ requiredEnvs.forEach((env) => {
 // --- 2. Middleware & CORS ---
 app.use(
   cors({
-    origin: "*", // Allow all origins for development; update to specific domains in production
-    // origin: [
-    //   "https://e-tuition-bd-client-eight.vercel.app",
-    //   // "https://etutionbd-client.vercel.app", // Placeholder for production
-    // ],
+    origin: [
+      "https://e-tuition-bd-client-eight.vercel.app",
+      // "https://etutionbd-client.vercel.app", // Placeholder for production
+    ],
     credentials: true,
   })
 );
