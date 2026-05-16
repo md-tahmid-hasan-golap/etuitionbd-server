@@ -98,7 +98,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-// --- 6. Port Listening ---
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
