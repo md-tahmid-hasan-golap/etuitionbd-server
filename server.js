@@ -21,10 +21,11 @@ requiredEnvs.forEach((env) => {
 // --- 2. Middleware & CORS ---
 app.use(
   cors({
-    origin: [
-      "https://e-tuition-bd-client-eight.vercel.app",
-      // "https://etutionbd-client.vercel.app", // Placeholder for production
-    ],
+    origin: "*", // Allow all origins for development; update to specific domains in production
+    // origin: [
+    //   "https://e-tuition-bd-client-eight.vercel.app",
+    //   // "https://etutionbd-client.vercel.app", // Placeholder for production
+    // ],
     credentials: true,
   })
 );
@@ -42,7 +43,7 @@ const client = new MongoClient(uri, {
 
 async function run() {
   try {
-    // Connect the client to the server
+    
    
     
     const db = client.db("tuitionDB");
