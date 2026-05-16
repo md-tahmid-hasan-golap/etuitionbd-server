@@ -99,7 +99,7 @@ module.exports = (usersCollection, tuitionsCollection, tutorsCollection) => {
     }
   });
 
-  // GET /user/role/:email - Fetch user role by email
+  // GET /user/role/:email - Fetch user role by 
   router.get("/user/role/:email", async (req, res) => {
     const email = req.params.email;
     const query = { email: email };
