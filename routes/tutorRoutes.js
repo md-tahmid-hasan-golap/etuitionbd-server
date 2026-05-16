@@ -3,7 +3,7 @@ const { ObjectId } = require("mongodb");
 const router = express.Router();
 
 /**
- * Tutor Routes
+ 
  * Handles tuition applications, ongoing tuitions, and revenue tracking
  */
 module.exports = (tuitionsCollection, applicationsCollection, paymentsCollection, tutorsCollection) => {
