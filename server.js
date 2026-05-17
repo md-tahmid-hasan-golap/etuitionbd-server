@@ -79,7 +79,7 @@ async function run() {
 }
 run().catch(console.dir);
 
-// --- 4. Health Check & Root Route ---
+// --- 4. Health Check & Root  ---
 app.get("/", (req, res) => {
   res.status(200).json({
     message: "Tuition Management Server is running...",
