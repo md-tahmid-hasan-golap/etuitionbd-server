@@ -4,7 +4,7 @@ const router = express.Router();
 
 /**
  
- * Handles tuition applications, ongoing tuitions, and revenue tracking
+ * Handles  applications, ongoing tuitions, and revenue tracking
  */
 module.exports = (tuitionsCollection, applicationsCollection, paymentsCollection, tutorsCollection) => {
   // GET /available-tuitions - Fetch all tuitions where status is 'Approved'
