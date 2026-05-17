@@ -23,7 +23,7 @@ app.use(
   cors({
     origin: [
       "https://e-tuition-bd-client-eight.vercel.app",
-      // "https://etutionbd-client.vercel.app", // Placeholder  
+      // "https://etutionbd-client.vercel.app", //   
     ],
     credentials: true,
   })
