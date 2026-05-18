@@ -43,7 +43,7 @@ module.exports = (tuitionsCollection, applicationsCollection, paymentsCollection
     }
   });
 
-  // GET /my-applications/:email - Fetch all applications made by a specific tutor
+  // GET /my-applications/:email - Fetch all applications made by a specific 
   router.get("/my-applications/:email", async (req, res) => {
     const email = req.params.email;
     try {
